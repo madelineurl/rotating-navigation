@@ -5,11 +5,63 @@
 body {
   font-family: 'Roboto', sans-serif;
   margin: 0;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  /* you can still use justify content if the flex-direction is column!
-  but it doesn't do anything */
-  height: 100vh;
-  align-items: center;
+  background-color: #333;
+  color: #222;
+  /* only hides scroll bar on x axis */
+  overflow-x: hidden;
+}
+
+.container {
+  background-color: #fafafa;
+  /* we want to rotate from the top-left, not middle */
+  transform-origin: top left;
+  transition: transform 0.5s linear;
+  width: 100vw;
+  min-height: 100vh;
+  padding: 50px;
+}
+
+.container.show-nav {
+  transform: rotate(-20deg);
+}
+
+.circle-container {
+  position: fixed;
+  /* adjust these amounts if we change height of circle below */
+  top: -100px;
+  left: -100px;
+}
+
+.circle {
+  background-color: #ff7979;
+  height: 200px;
+  width: 200px;
+  border-radius: 50%;
+  transition: transform 0.5s linear;
+}
+
+.circle button {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  height: 100px;
+  background: transparent;
+  border: 0;
+  font-size: 26px;
+  color: #fff;
+}
+
+.circle button:focus {
+  outline: none;
+}
+
+.circle button#open {
+  left: 60%;
+}
+
+.circle button#close {
+  /* relative to the circle */
+  top: 60%;
+  transform: rotate(90deg);
+  transform-origin: top left;
 }
